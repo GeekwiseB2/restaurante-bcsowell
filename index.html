@@ -34,11 +34,11 @@
 		 </ul>
 
 		 <ul class="nav navbar-nav navbar-right">
-			 <li class="active"><a href="#">Link <span class="sr-only">Home</span></a></li>
-			 <li><a href="#story">Story</a></li> <!--Way to link to a place on the same page-->
-			 <li><a href="#">Review</a></li>
-			 <li><a href="#">Menu</a></li>
-			 <li><a href="#">Contact Us</a></li>
+			 <li class="active"><a class="smooth-scroll" href="#home">Link <span class="sr-only">Home</span></a></li>
+			 <li><a class="smooth-scroll" href="#story">Story</a></li> <!--Way to link to a place on the same page-->
+			 <li><a class="smooth-scroll" href="#review">Review</a></li>
+			 <li><a class="smooth-scroll" href="#menu">Menu</a></li>
+			 <li><a class="smooth-scroll" href="#contact">Contact Us</a></li>
 				 </ul>
 			 </li>
 		 </ul>
@@ -213,21 +213,28 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
 	<script>
-	$(function() {
-	$('a[href*=#]:not([href=#])').click(function() {
-			if( $(this).attr("href")=="#carousel-example-generic") return;//This is the exception
-			if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-					var target = $(this.hash);
-					target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-					if (target.length) {
-							$('html,body').animate({
-									scrollTop: target.offset().top
-							}, 1000);
-							return false;
-					}
-			}
-	});
-});
+        $(function() {
+            $('a[href*=#]:not([href=#])').click(function() {
+                      if( $(this).hasClass("smooth-scroll")) {
+                    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
+                            var target = $(this.hash);
+                            target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+                            if (target.length) {
+                                    $('html,body').animate({
+                                            scrollTop: target.offset().top
+                                    }, 1000);
+                                    return false;
+                            }
+                    }
+                }
+            });
+        });
+    </script>
+		<script>
+    $(".navbar-nav a").on("click", function(){
+     $(".navbar-nav").find(".active").removeClass("active");
+     $(this).parent().addClass("active");
+    });
     </script>
 </body>
 </html>
